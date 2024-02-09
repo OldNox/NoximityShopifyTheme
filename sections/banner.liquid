@@ -1,28 +1,30 @@
 <section>
     <div class="banner-wrapper">
-        <div class="slide-text" id="text1"><p>Members: Free Shipping!</p></div>
-        <div class="slide-text" id="text2">Save Up to 40%</div>
-        <div class="slide-text" id="text3">Get Your Gear Faster</div>
+        <div class="slide-text" id="text1"><p>Follow us on Twitter!</p></div>
+        <div class="slide-text" id="text2">Join our Discord server!</div>
+        <div class="slide-text" id="text3">Made in Slovenia 🇸🇮</div>
     </div>
 </section>
-
 <style>
     .banner-wrapper {
         padding: 30px;
-        background: {{ section.settings.background }};
-        color: {{ section.settings.text_color }};
-
+        background: {{ settings.background }};
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative; /* Add this to contain the absolute positioned text divs */
     }
 
     .slide-text {
-        position: absolute;
-        top: 155px;
-        left: -150%; /* Initially position the divs outside the left edge of the screen */
-        transform: translate(0, -50%);
-        color: black;
+        position: absolute; /* Add this back to position the text at the same place */
+        color: {{ settings.text_color }};
         padding: 20px;
         font-size: 20px;
-        transition: left 0.5s ease-in-out; /* Add a smooth transition effect */
+        text-align: center;
+        text-shadow: 2px 2px 4px rgba(38, 38, 38, 0.58);
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out; /* Adjust the transition effect */
     }
 </style>
 
@@ -36,28 +38,25 @@
         const texts = [text1, text2, text3];
         let currentIndex = 0;
 
-        // Function to slide the text to the middle
-        function slideToMiddle(element) {
-            element.style.left = '40%';
+        // Function to display the text
+        function displayText(element) {
+            element.style.opacity = '1';
         }
 
-        // Function to reset the position of the text
-        function resetPosition(element) {
-            element.style.left = '-100%';
+        // Function to hide the text
+        function hideText(element) {
+            element.style.opacity = '0';
         }
 
-        // Function to handle sliding the text elements
-        function slideText() {
-            resetPosition(texts[currentIndex]);
+        // Function to handle displaying the text elements
+        function displayNextText() {
+            hideText(texts[currentIndex]);
             currentIndex = (currentIndex + 1) % texts.length;
-            slideToMiddle(texts[currentIndex]);
+            displayText(texts[currentIndex]);
         }
 
-        // Initial slide
-        slideToMiddle(texts[currentIndex]);
-
-        // Set interval to slide the text every 3 seconds
-        setInterval(slideText, 3000);
+        // Set interval to display the next text every 3 seconds
+        setInterval(displayNextText, 3000);
     });
 </script>
 
