@@ -1,4 +1,4 @@
-{% paginate collection.products by 4 %}
+{% paginate collection.products by 12 %}
     <section class="collection-sec">
         <div>
             <select id="sort-by">
@@ -21,15 +21,17 @@
             <p>{{ collection.title }}</p>
             <div class="products-grid">
                 {% for product in collection.products %}
-                    <div class="product-card">
-                        <img
-                                width="300"
-                                height="300"
-                                loading="lazy"
-                                src="{{ product.featured_image | image_url }}"
-                        >
-                        <h3>{{- product.title | link_to: product.url }}</h3>
-                    </div>
+                    <a href="{{ product.url }}" class="product-card">
+                        <div>
+                            <img
+                                    width="300"
+                                    height="300"
+                                    loading="lazy"
+                                    src="{{ product.featured_image | image_url }}"
+                            >
+                            <h3>{{- product.title }}</h3>
+                        </div>
+                    </a>
                 {% endfor %}
             </div>
         </div>
@@ -38,6 +40,7 @@
     {{ paginate | default_pagination }}
     {% endpaginate %}
 </div>
+
 
 <style>
     .collection-sec {
@@ -60,20 +63,29 @@
         margin: 0;
         font-size: 1.2rem;
         text-transform: uppercase;
-
+        padding-bottom: 10px;
     }
 
     .products-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr); /* Four columns */
-        gap: 20px; /* Adjust the gap between grid items */
+        grid-template-columns: repeat(4, 1fr); /* Change to three columns */
+        gap: 15px; /* Decrease the gap between grid items */
+        justify-content: center; /* Center items horizontally */
     }
 
     .product-card {
-        border: 1px solid #DDDDDD; /* Add a border for each product card */
-        padding: 20px;
+        border: 2px solid #AAAAAA; /* Increase border width and change color */
+        padding: 15px;
         text-align: center;
-        transition: border-color 0.3s ease; /* Add transition for hover effect */
+        border-radius: 8px; /* Increase border radius for rounded corners */
+        transition: border-color 0.4s ease, transform 0.4s ease; /* Add transition for hover effect */
+    }
+
+    .product-card:hover {
+        border-color: #333333;
+        scale: 1.01;
+        transition: ease-in-out 0.3s;
+        box-shadow: 1px 1px 5px 1px #333333;
     }
 
     .collection-sec a {
@@ -121,6 +133,7 @@
     .product-card img {
         max-width: 100%;
         height: auto;
+        border-radius: 5px;
     }
 
     .pagination {
