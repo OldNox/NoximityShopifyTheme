@@ -34,34 +34,99 @@
             </div>
         </div>
     </section>
-
+<div class="pagination">
     {{ paginate | default_pagination }}
-{% endpaginate %}
+    {% endpaginate %}
+</div>
 
 <style>
     .collection-sec {
-        background: {{ section.settings.background }};
-        color: {{ section.settings.text_color }};
-        padding: 10px;
         display: flex;
-        justify-content: space-between
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: #333333;
+    }
+
+    .collection-sec h1 {
+        font-size: 2rem;
+        margin: 0;
+        text-transform: uppercase;
+
+    }
+
+    .collection-sec p {
+        margin: 0;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+
     }
 
     .products-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr); /* Three columns */
+        grid-template-columns: repeat(4, 1fr); /* Four columns */
         gap: 20px; /* Adjust the gap between grid items */
     }
 
     .product-card {
-        border: 1px solid #ddd; /* Add a border for each product card */
-        padding: 10px;
+        border: 1px solid #DDDDDD; /* Add a border for each product card */
+        padding: 20px;
         text-align: center;
+        transition: border-color 0.3s ease; /* Add transition for hover effect */
+    }
+
+    .collection-sec a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    span {
+        display: inline-block;
+        padding: 5px 10px;
+        margin: 5px;
+        border-radius: 5px;
+        background-color: #F0F0F0;
+        color: #333333;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    span a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    span:hover {
+        background-color: #DDDDDD;
+    }
+
+    .product-card:hover {
+        border-color: #AAAAAA; /* Change border color on hover */
+    }
+
+    select, button {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #DDDDDD;
+        background: #F0F0F0;
+        color: #333333;
+    }
+
+    select:hover, button:hover {
+        border-color: #AAAAAA;
     }
 
     .product-card img {
         max-width: 100%;
         height: auto;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
     }
 </style>
 
