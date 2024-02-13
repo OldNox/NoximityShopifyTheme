@@ -12,6 +12,7 @@
                             {% endif %}
                     >
                         {{ option.name }}
+
                     </option>
                 {% endfor %}
             </select>
@@ -30,6 +31,7 @@
                                     src="{{ product.featured_image | image_url }}"
                             >
                             <h3>{{- product.title }}</h3>
+                            <p>{{ product.price | money }}</p>
                         </div>
                     </a>
                 {% endfor %}
@@ -56,7 +58,8 @@
         font-size: 2rem;
         margin: 0;
         text-transform: uppercase;
-
+        padding-bottom: 10px;
+        color: #122;
     }
 
     .collection-sec p {
@@ -64,6 +67,7 @@
         font-size: 1.2rem;
         text-transform: uppercase;
         padding-bottom: 10px;
+        color: #1c2731;
     }
 
     .products-grid {
@@ -74,9 +78,9 @@
     }
 
     .product-card {
-        border: 2px solid #AAAAAA; /* Increase border width and change color */
         padding: 15px;
         text-align: center;
+        background-color: rgba(239, 239, 239, 0.48);
         border-radius: 8px; /* Increase border radius for rounded corners */
         transition: border-color 0.4s ease, transform 0.4s ease; /* Add transition for hover effect */
     }
