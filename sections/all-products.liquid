@@ -1,5 +1,5 @@
 <section class="all-products">
-    <h1>{{ collections['studio'].title }}</h1>
+    <h1>Collection of the month: {{ collections['studio'].title }}</h1>
     <div class="product-container">
         <div class="all-products-wrapper">
             {% for product in collections['studio'].products %}
@@ -25,6 +25,11 @@
 
     }
 
+    .all-products h1 {
+        text-align: center;
+        text-transform: uppercase;
+    }
+
     .all-products-wrapper {
         display: flex;
         transition: transform 0.3s ease; /* Add smooth transition effect */
@@ -48,7 +53,7 @@
 
     .product-card h3 a {
         color: black;
-        text-decoration: none
+        text-decoration: none;
     }
 
     .product-card a:hover {

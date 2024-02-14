@@ -3,15 +3,17 @@
     <div class="collection-container">
         <div class="all-collections-wrapper">
             {% for collection in collections %}
-                <div class="collection-card">
-                    <img
-                            width="300"
-                            height="300"
-                            loading="lazy"
-                            src="{{ collection.featured_image | image_url }}"
-                    >
-                    <h3>{{- collection.title | link_to: collection.url }}</h3>
-                </div>
+                <a href="{{ collection.url }}" class="collection-card-link"> <!-- Added anchor tag -->
+                    <div class="collection-card">
+                        <img
+                                width="300"
+                                height="300"
+                                loading="lazy"
+                                src="{{ collection.featured_image | image_url }}"
+                        >
+                        <h3>{{- collection.title }}</h3> <!-- Removed link_to filter -->
+                    </div>
+                </a>
             {% endfor %}
         </div>
 
@@ -31,6 +33,11 @@
         padding: 10px;
     }
 
+    .all-collections h1 {
+        text-align: center;
+        text-transform: uppercase;
+    }
+
     .collection-container {
         position: relative;
         overflow-x: scroll;
@@ -39,6 +46,11 @@
     .all-collections-wrapper {
         display: flex;
         transition: transform 0.3s ease; /* Add smooth transition effect */
+        border-radius: 5px;
+    }
+
+    .collection-card-link {
+        text-decoration: none;
     }
 
     .collection-card {
@@ -48,15 +60,31 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        background-color: #DDDDDD;
+        text-decoration: none;
+        margin: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 5px;
     }
 
-    .collection-card h3 a {
+    .collection-card h3 {
         color: black;
-        text-decoration: none
+        text-transform: uppercase;
+        text-align: center;
+        margin-top: 10px;
+        text-decoration: none;
     }
 
-    .collection-card a:hover {
-        text-decoration: underline;
+    .collection-card img {
+        border-radius: 5px;
+    }
+
+    .collection-card:hover {
+        scale: 1.01;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        transition: ease-in-out 0.3s;
+
     }
 </style>
 
