@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="product-details">
-            <h2>{{ product.title }}</h2>
+            <h1>{{ product.title }}</h1>
             <p class="product-price">{{ product.price | money }}</p>
             <p class="product-description">{{ product.description }}</p>
             <div class="product-options">
@@ -38,6 +38,12 @@
 </section>
 
 <style>
+
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
     .product-images-container {
         position: relative;
     }
@@ -46,12 +52,15 @@
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        background-color: rgba(255, 255, 255, 0.5);
         border: none;
         cursor: pointer;
-        font-size: 20px;
+        font-size: 30px;
         padding: 10px;
+        background-color: rgba(255, 255, 255, 0);
+        color: #ffffff;
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         z-index: 1;
+
     }
 
     .prev-image-btn {
@@ -75,7 +84,11 @@
     }
 
     .product-image {
-        margin-right: 20px;
+        display: block;
+        width: 550px;
+        height: 550px;
+        margin-bottom: 20px;
+        border-radius: 5px;
     }
 
     .product-image img {
@@ -88,11 +101,13 @@
 
     .product-details {
         flex: 1;
+        padding: 20px;
     }
 
     .product-price {
         font-weight: bold;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
+        margin-bottom: 20px;
     }
 
     .product-description {
@@ -108,26 +123,47 @@
     }
 
     .product-variant-select {
-        padding: 8px;
-        font-size: 16px;
+        padding: 10px 20px;
+        border: none;
+        color: #616e7c; /* Set text color to black */
+        background-color: #dedede; /* Set background color to white */
         border-radius: 5px;
-        border: 1px solid #ccc;
-        margin-bottom: 10px;
+        box-shadow: 2px 2px 0 #b6babe; /* Add 3D corner effect */
+        cursor: pointer;
+        width: 400px;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .product-variant-select:hover {
+        color: #616e7c; /* Set text color to white */
+        background-color: #eeeeee; /* Set background color to black */
+    }
+
+    .product-variant-select:focus {
+        outline: none;
+    }
+
+    .product-form {
+        display: flex;
+        flex-direction: column;
+
     }
 
     .product-add-to-cart-btn {
         padding: 10px 20px;
-        font-size: 16px;
-        background-color: #333;
-        color: #fff;
+        width: 400px;
         border: none;
+        color: #616e7c; /* Set text color to black */
+        background-color: #dedede; /* Set background color to white */
         border-radius: 5px;
+        box-shadow: 2px 2px 0 #b6babe; /* Add 3D corner effect */
         cursor: pointer;
-        transition: background-color 0.3s ease;
     }
 
     .product-add-to-cart-btn:hover {
-        background-color: #555;
+        color: #616e7c; /* Set text color to white */
+        background-color: #eeeeee; /* Set background color to black */
     }
 </style>
 
